@@ -7,7 +7,8 @@ class CRiver :public CObstacle
 public:
 	int x;
 	int y;
-	int width = 21;
+	int speed = 1;
+	int width = 78;
 	int height = 3;
 	OBSTACLE_TYPE Type = RIVER;
 

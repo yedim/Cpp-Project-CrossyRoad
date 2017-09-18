@@ -7,7 +7,8 @@ class CTrain :public CObstacle
 public:
 	int x;
 	int y;
-	int width = 15;
+	int speed = 2;
+	int width = 20;
 	int height = 3;
 	OBSTACLE_TYPE Type = TRAIN;
 

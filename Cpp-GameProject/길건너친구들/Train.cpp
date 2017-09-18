@@ -27,13 +27,11 @@ void CTrain::Move()
 	CGameSetting::draw_shape(3); CGameSetting::draw_shape(1); CGameSetting::draw_shape(1);
 	CGameSetting::draw_shape(1); CGameSetting::draw_shape(1); CGameSetting::draw_shape(1);
 	CGameSetting::draw_shape(1); CGameSetting::draw_shape(1); CGameSetting::draw_shape(1);
-	CGameSetting::draw_shape(1); CGameSetting::draw_shape(1); CGameSetting::draw_shape(1);
-	CGameSetting::draw_shape(1); CGameSetting::draw_shape(1); CGameSetting::draw_shape(4);
-	cout << endl;
+	CGameSetting::draw_shape(4); cout << endl;
 
 	CGameSetting::gotoxy(x, y + 1);
 	CGameSetting::draw_shape(2);
-	cout << "¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á";
+	cout << "¡á¡á¡á¡á¡á¡á¡á¡á";
 	CGameSetting::draw_shape(2);
 	cout << endl;
 
@@ -41,8 +39,7 @@ void CTrain::Move()
 	CGameSetting::draw_shape(6); CGameSetting::draw_shape(1); CGameSetting::draw_shape(1);
 	CGameSetting::draw_shape(1); CGameSetting::draw_shape(1); CGameSetting::draw_shape(1);
 	CGameSetting::draw_shape(1); CGameSetting::draw_shape(1); CGameSetting::draw_shape(1);
-	CGameSetting::draw_shape(1); CGameSetting::draw_shape(1); CGameSetting::draw_shape(1);
-	CGameSetting::draw_shape(1); CGameSetting::draw_shape(1); CGameSetting::draw_shape(5);
+	CGameSetting::draw_shape(5);
 
 	if (x + width >= SCREEN_X){ x = 0; }
 }

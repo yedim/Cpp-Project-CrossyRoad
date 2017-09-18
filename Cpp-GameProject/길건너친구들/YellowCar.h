@@ -7,7 +7,8 @@ class CYellowCar :public CObstacle
 public:
 	int x;
 	int y;
-	int width = 6;
+	int speed = 1;
+	int width = 8;
 	int height = 3;
 	OBSTACLE_TYPE Type = YELLOWCAR;
 
