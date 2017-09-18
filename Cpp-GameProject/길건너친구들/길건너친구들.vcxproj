@@ -76,6 +76,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BlueCar.cpp" />
+    <ClCompile Include="GameOver.cpp" />
+    <ClCompile Include="GamePlay.cpp" />
+    <ClCompile Include="GameSetting.cpp" />
+    <ClCompile Include="GameStart.cpp" />
+    <ClCompile Include="MainGame.cpp" />
+    <ClCompile Include="Object.cpp" />
+    <ClCompile Include="Obstacle.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="RedCar.cpp" />
+    <ClCompile Include="River.cpp" />
+    <ClCompile Include="Train.cpp" />
+    <ClCompile Include="YellowCar.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BlueCar.h" />
+    <ClInclude Include="GameOver.h" />
+    <ClInclude Include="GamePlay.h" />
+    <ClInclude Include="GameSetting.h" />
+    <ClInclude Include="GameStart.h" />
+    <ClInclude Include="Object.h" />
+    <ClInclude Include="Obstacle.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="RedCar.h" />
+    <ClInclude Include="River.h" />
+    <ClInclude Include="Train.h" />
+    <ClInclude Include="YellowCar.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

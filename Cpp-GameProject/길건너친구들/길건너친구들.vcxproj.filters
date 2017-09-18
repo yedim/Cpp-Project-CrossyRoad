@@ -13,5 +13,132 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="소스 파일\00.GameSetting">
+      <UniqueIdentifier>{9a3f3083-15cb-4d79-a5e2-1be24cf5b9fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01.Game">
+      <UniqueIdentifier>{572bf32d-af42-4544-a55a-3a10893c8bd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01.Game\00.GameStart">
+      <UniqueIdentifier>{1024db1c-3b8f-4056-911d-3cc9009be4e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01.Game\01.GamePlay">
+      <UniqueIdentifier>{948bebe8-e28c-4c8a-8cf3-10b16d03797c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01.Game\02.GameOver">
+      <UniqueIdentifier>{41c8777c-ba15-4c7c-aea0-0521730c21c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02.Object">
+      <UniqueIdentifier>{7432c935-ddcb-4426-bbdf-769348dab52a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02.Object\00.Object">
+      <UniqueIdentifier>{5d5cfbd3-b5b2-4360-8071-b37cc3ede920}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02.Object\01.Player">
+      <UniqueIdentifier>{69519ed3-7443-4260-8347-1f3e955b9a44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02.Object\02.Obstacle">
+      <UniqueIdentifier>{1c488dfb-b7b9-4aef-a783-6c7732e9859f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02.Object\02.Obstacle\00.Obstacle">
+      <UniqueIdentifier>{264db627-60a5-4b75-8444-b8a6b8183ca8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02.Object\02.Obstacle\01.BlueCar">
+      <UniqueIdentifier>{504392c6-49b5-4c63-a365-51cbcbcfe313}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02.Object\02.Obstacle\02.RedCar">
+      <UniqueIdentifier>{abc0a15b-e7d4-43ae-b061-d1c0c0a3e080}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02.Object\02.Obstacle\03.YellowCar">
+      <UniqueIdentifier>{97969089-06c1-46c3-bdd8-d9e54c827b26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02.Object\02.Obstacle\04.Train">
+      <UniqueIdentifier>{6e408c83-147b-4077-99bf-5bc6e7d70c79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02.Object\02.Obstacle\05.River">
+      <UniqueIdentifier>{90f758aa-56f0-49e3-b0a5-4969c2ed903b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02.Object\02.Obstacle\06.Log">
+      <UniqueIdentifier>{0f529433-925e-470f-9afc-e5df4924ced6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GameSetting.cpp">
+      <Filter>소스 파일\00.GameSetting</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStart.cpp">
+      <Filter>소스 파일\01.Game\00.GameStart</Filter>
+    </ClCompile>
+    <ClCompile Include="GamePlay.cpp">
+      <Filter>소스 파일\01.Game\01.GamePlay</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOver.cpp">
+      <Filter>소스 파일\01.Game\02.GameOver</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>소스 파일\02.Object\00.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>소스 파일\02.Object\01.Player</Filter>
+    </ClCompile>
+    <ClCompile Include="BlueCar.cpp">
+      <Filter>소스 파일\02.Object\02.Obstacle\01.BlueCar</Filter>
+    </ClCompile>
+    <ClCompile Include="Obstacle.cpp">
+      <Filter>소스 파일\02.Object\02.Obstacle\00.Obstacle</Filter>
+    </ClCompile>
+    <ClCompile Include="RedCar.cpp">
+      <Filter>소스 파일\02.Object\02.Obstacle\02.RedCar</Filter>
+    </ClCompile>
+    <ClCompile Include="YellowCar.cpp">
+      <Filter>소스 파일\02.Object\02.Obstacle\03.YellowCar</Filter>
+    </ClCompile>
+    <ClCompile Include="Train.cpp">
+      <Filter>소스 파일\02.Object\02.Obstacle\04.Train</Filter>
+    </ClCompile>
+    <ClCompile Include="River.cpp">
+      <Filter>소스 파일\02.Object\02.Obstacle\05.River</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGame.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameSetting.h">
+      <Filter>소스 파일\00.GameSetting</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStart.h">
+      <Filter>소스 파일\01.Game\00.GameStart</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePlay.h">
+      <Filter>소스 파일\01.Game\01.GamePlay</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOver.h">
+      <Filter>소스 파일\01.Game\02.GameOver</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>소스 파일\02.Object\00.Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>소스 파일\02.Object\01.Player</Filter>
+    </ClInclude>
+    <ClInclude Include="BlueCar.h">
+      <Filter>소스 파일\02.Object\02.Obstacle\01.BlueCar</Filter>
+    </ClInclude>
+    <ClInclude Include="Obstacle.h">
+      <Filter>소스 파일\02.Object\02.Obstacle\00.Obstacle</Filter>
+    </ClInclude>
+    <ClInclude Include="RedCar.h">
+      <Filter>소스 파일\02.Object\02.Obstacle\02.RedCar</Filter>
+    </ClInclude>
+    <ClInclude Include="YellowCar.h">
+      <Filter>소스 파일\02.Object\02.Obstacle\03.YellowCar</Filter>
+    </ClInclude>
+    <ClInclude Include="Train.h">
+      <Filter>소스 파일\02.Object\02.Obstacle\04.Train</Filter>
+    </ClInclude>
+    <ClInclude Include="River.h">
+      <Filter>소스 파일\02.Object\02.Obstacle\05.River</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
