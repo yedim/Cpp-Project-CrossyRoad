@@ -37,17 +37,14 @@ enum OBSTACLE_TYPE
 	REDCAR,
 	YELLOWCAR,
 	TRAIN,
-	RIVER,
-	LOG,
-	OBJ_MAX,
-	OBJ_RANDOM = 20
+	OBJ_MAX=6,
 };
 
 class CGameSetting{
 public:
 	static void gotoxy(int x, int y);//커서 위치 변경
 	static void setcolor(COLOR_TYPE backcolor, COLOR_TYPE fontcolor);//색상 변경
-	static void draw_shape(int num);//모양 그리기
+	static int MenuSelect(int x, int y, int Min, int Max, int Space);
 
 public:
 	CGameSetting();

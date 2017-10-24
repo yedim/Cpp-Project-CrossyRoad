@@ -8,18 +8,18 @@ CObject::CObject()
 }
 CObject::~CObject()
 {
-
+	delete[] &ObstacleList;
 }
 
 void CObject::AddObject(CObstacle* obstacle, int x, int y)
 {
-	obstacle->Init(x, y);
+	obstacle->Init(x, y); //초기화
 	obstacle->x = x;
 	obstacle->y = y;
 	ObstacleList[obstacle->GetType()].push_back(obstacle);
 }
 
-void CObject::Move(CPlayer* player)
+int CObject::Move(CPlayer* player)
 {
 	for (int i = 0; i < OBJ_MAX; ++i)
 	{
@@ -27,20 +27,20 @@ void CObject::Move(CPlayer* player)
 		{
 			(*iter)->Move();
 
-			//충돌했을 때 조건
+				//충돌했을 때 조건
 			if ((*iter)->GetX() < player->player_x + player->width &&//왼쪽
 				(*iter)->GetX() + (*iter)->GetWidth() > player->player_x &&//오른쪽
 				(*iter)->y + (*iter)->GetHeight() > player->player_y &&//아래
-				(*iter)->y < player->player_y + player->height)//위
-			{
-				cout << "충돌!!!";
-			}
+					(*iter)->y < player->player_y + player->height)//위
+				{
+					cout << " -♥";	
+					return 1;
+				}			
+			
 
 			//화면을 벗어나면 리스트의 객체를 지운다
-			if ((*iter)->y + (*iter)->GetHeight() >= SCREEN_Y && (*iter)->GetX() + (*iter)->GetWidth() >= SCREEN_X - 1)
+			if ((*iter)->y + (*iter)->GetHeight() >= SCREEN_Y && (*iter)->GetX() + (*iter)->GetWidth() >= SCREEN_X-1)
 			{
-				//delete (*iter);
-				//(*iter) = NULL;
 				iter = ObstacleList[(*iter)->GetType()].erase(iter);
 			}
 			else
@@ -49,6 +49,7 @@ void CObject::Move(CPlayer* player)
 			}
 		}
 	}
+	return 0;
 }
 
 void CObject::Scroll()
@@ -57,7 +58,7 @@ void CObject::Scroll()
 	{
 		for (list<CObstacle*>::iterator iter = ObstacleList[i].begin(); iter != ObstacleList[i].end(); ++iter)
 		{
-			//화면 밖으로 자동차가 나가지 않도록 함.
+			//화면 밖으로 장애물들이 나가지 않도록 함.
 			if ((*iter)->y + (*iter)->GetHeight() < SCREEN_Y)
 			{
 				(*iter)->Init((*iter)->y += 3);

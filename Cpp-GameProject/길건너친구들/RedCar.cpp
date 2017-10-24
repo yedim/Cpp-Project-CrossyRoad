@@ -22,26 +22,18 @@ void CRedCar::Move()
 	CGameSetting::setcolor(DARK_GREEN, RED);
 
 	CGameSetting::gotoxy(x += speed, y);
-	CGameSetting::draw_shape(3); CGameSetting::draw_shape(1);
-	CGameSetting::draw_shape(1); CGameSetting::draw_shape(4); cout << endl;
-
+	printf("忙式式忖\n");
 	CGameSetting::gotoxy(x, y + 1);
-	CGameSetting::draw_shape(2); cout << "﹥﹥"; CGameSetting::draw_shape(2); cout << endl;
-
+	printf("弛﹥﹥弛\n");
 	CGameSetting::gotoxy(x, y + 2);
-	CGameSetting::draw_shape(6); CGameSetting::draw_shape(1);
-	CGameSetting::draw_shape(1); CGameSetting::draw_shape(5);
-
+	printf("戌式式戎");
 	if (x + width >= SCREEN_X){ x = 0; }
 }
 int CRedCar::GetX()
 {
 	return x;
 }
-int CRedCar::GetY()
-{
-	return y;
-}
+
 int CRedCar::GetWidth()
 {
 	return width;

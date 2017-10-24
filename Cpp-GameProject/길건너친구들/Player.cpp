@@ -1,22 +1,20 @@
-#pragma once
 #include "Player.h"
 CPlayer::CPlayer()
 {
-
 }
 CPlayer::~CPlayer()
 {
 }
-void CPlayer::Draw()
+void CPlayer::Draw(COLOR_TYPE bgcolor, COLOR_TYPE fontcolor)
 {
-	CGameSetting::setcolor(DARK_GREEN, WHITE);
+	CGameSetting::setcolor(bgcolor, fontcolor);
 	printf("бс"); // Player Character
 }
 void CPlayer::move_arrow_key(char key, int *x, int *y, int x_b, int y_b){
 	switch (key){
 	case 72:
 		*y = *y - 1;//UP
-		if (*y<1) *y = 1;
+		if (*y<5) *y = 5;
 		break;
 	case 75://LEFT
 		*x = *x - 1;

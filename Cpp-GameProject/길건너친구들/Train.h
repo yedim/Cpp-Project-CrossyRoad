@@ -17,7 +17,6 @@ public:
 	virtual void Init(int y);
 	virtual void Move();
 	virtual int GetX();
-	virtual int GetY();
 	virtual int GetWidth();
 	virtual int GetHeight();
 	virtual OBSTACLE_TYPE GetType();

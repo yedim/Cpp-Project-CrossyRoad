@@ -5,9 +5,9 @@ class CGameStart
 {
 public:
 	void LoadingGame();
-	void SettingGame();
 	void DelCursor();//커서 없애기
-	void Title(int titleX, int titleY, bool animation);
+	int MainMenu(int menu_x, int menu_y);
+	int RulesMenu(int menu_x, int menu_y);
 
 public:
 	CGameStart();

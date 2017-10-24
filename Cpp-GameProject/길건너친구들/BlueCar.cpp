@@ -23,24 +23,18 @@ void CBlueCar::Move()
 {
 	CGameSetting::setcolor(DARK_GREEN, BLUE);
 	CGameSetting::gotoxy(x += speed, y);
-	CGameSetting::draw_shape(3); CGameSetting::draw_shape(1); CGameSetting::draw_shape(4);  cout << endl;
-
+	printf("¦£¦¡¦¤\n");
 	CGameSetting::gotoxy(x, y + 1);
-	CGameSetting::draw_shape(2); cout << "¡á"; CGameSetting::draw_shape(2); cout << endl;
-
+	printf("¦¢¡á¦¢\n");
 	CGameSetting::gotoxy(x, y + 2);
-	CGameSetting::draw_shape(6); CGameSetting::draw_shape(1); CGameSetting::draw_shape(5);
-
+	printf("¦¦¦¡¦¥");
+	
 	if (x + width >= SCREEN_X){ x = 0; }
 }
 
 int CBlueCar::GetX()
 {
 	return x;
-}
-int CBlueCar::GetY()
-{
-	return y;
 }
 int CBlueCar::GetWidth()
 {

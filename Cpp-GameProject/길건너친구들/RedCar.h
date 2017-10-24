@@ -8,7 +8,7 @@ public:
 	int x;
 	int y;
 	int speed = 1;
-	int width = 6;
+	int width = 8;
 	int height = 3;
 	OBSTACLE_TYPE Type = REDCAR;
 
@@ -17,7 +17,6 @@ public:
 	virtual void Init(int y);
 	virtual void Move();
 	virtual int GetX();
-	virtual int GetY();
 	virtual int GetWidth();
 	virtual int GetHeight();
 	virtual OBSTACLE_TYPE GetType();

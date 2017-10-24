@@ -3,47 +3,57 @@
 #include "BlueCar.h"
 #include "Player.h"
 #include "RedCar.h"
+#include "YellowCar.h"
+#include "Train.h"
+#include "GameOver.h"
 
 CGamePlay::CGamePlay()
 {
-	PlayingGame();
 }
 CGamePlay::~CGamePlay()
 {
-
+	delete obj;
+	delete player;
 }
 
-void CGamePlay::PlayingGame()
+int CGamePlay::PlayingGame()
 {
 	srand((unsigned)time(NULL));
-	int random;
 
-	CObject* obj = new CObject;
-	CPlayer* player = new CPlayer;
+	obj = new CObject;
+	player = new CPlayer;
 
-	runTime = clock(); //프로그램 실행시간
+	runTime = clock();
 	pressTime = runTime; //cf. 초기값 없으면->쓰레기값
 	while (true)
 	{
 		system("cls");
-		ScoreBoard();//점수판
-		nConsume++;
-		random = rand() % 6; //OBJ_RANDOM;//장애물을 랜덤으로 생성.
+		if (ScoreBoard(player) == 1) { return 1; }
+		scrollTime++;
+		unbeatableTime++;
 
-		if (nConsume >= 7)//일정시간이 지나면 장애물들과 플레이어가 스크롤한다.
+		random = rand() % OBJ_MAX;//장애물을 랜덤으로 생성.
+
+		if (scrollTime >= 7)//일정시간이 지나면 장애물들과 플레이어를 스크롤한다.
 		{
-			if (player->player_y < 35)
+			if (player->player_y <= 32)
 			{
 				CGameSetting::gotoxy(player->player_x, player->player_y += 3);
-				GameScreen(obj, random);
-				cout << random;
+				CreateObstacle(obj, random);
 			}
-
 			obj->Scroll();
-			nConsume = 0;
+			scrollTime = 0;
 		}
+
 		CGameSetting::gotoxy(player->player_x, player->player_y);
-		player->Draw();
+		if (unbeatableTime <= 5)
+		{
+			player->Draw(DARK_GREEN, RED);//무적상태 일 때 캐릭터는 빨간색.
+		}
+		else
+		{
+			player->Draw(DARK_GREEN, WHITE);//무적상태 아닐 때 캐릭터는 흰색.
+		}
 
 		for (int i = 0; i < OBJ_MAX; ++i)
 		{
@@ -55,51 +65,108 @@ void CGamePlay::PlayingGame()
 				if (player->key == 72)
 				{
 					score++;//점수 1점씩 증가
-					pressTime = runTime;//runTime-pressTime=0 -> 7초
+					if (score >= 1000){ score = 1000; return 1; } //최대 1000까지만 전진가능하다. 
+					coin++;
+					pressTime = runTime; //runTime-pressTime=0 -> 7초
 				}
 			}
-			obj->Move(player);
-			Sleep(80);
+			if (obj->Move(player) == 1)
+			{
+				if (unbeatableTime > 5)
+				{
+					--player->hp;
+				}
+				unbeatableTime = 0;
+			}
+			Sleep(50);
 		}
 		runTime = clock();
 	}
+	return 0;
+
 }
-void CGamePlay::ScoreBoard()
+
+//점수와 생명과 코인을 출력
+int CGamePlay::ScoreBoard(CPlayer* player)
 {
 	CGameSetting::setcolor(BLACK, WHITE);
 	timer = 7 - (runTime - pressTime) / 1000;//타이머
-	CGameSetting::gotoxy(50, 2);
-	printf("            ");
-	CGameSetting::gotoxy(50, 2);
-	printf("점수: %d", score);
-	CGameSetting::gotoxy(68, 3);
-	printf(" %d 초", timer); //현재시각 - (게임시작시간 - 프로그램 실행시간) > (ms) / 1000 = N(sec) 
-	if (timer <= 0)
+	CGameSetting::gotoxy(1, 0);
+	printf("                                                                                ");
+	CGameSetting::gotoxy(2, 0);
+	printf("                                                                                ");
+	CGameSetting::gotoxy(3, 0);
+	printf("                                                                                ");
+	CGameSetting::gotoxy(4, 0);
+	printf("                                                                  2516 이예림   ");
+
+	CGameSetting::gotoxy(5, 2);
+	printf("Score %d", score);
+	CGameSetting::gotoxy(47, 2);
+	printf("Timer ");
+	for (int i = 0; i < timer; i++)
 	{
-		_getch();
-		//화면전환
+		printf("■");
 	}
+	//printf("Timer  %d초", timer); //현재시각 - (게임시작시간 - 프로그램 실행시간) > (ms) / 1000 = N(sec) 
+	CGameSetting::gotoxy(70, 2);
+	CGameSetting::setcolor(BLACK, YELLOW);
+	printf("Coin %3d", coin); 
+
+	CGameSetting::gotoxy(33, 2);
+	for (int i = 0; i < player->hp; i++)
+	{
+		CGameSetting::setcolor(BLACK,RED); printf("♥");
+	}
+	if (timer <= 0 || player->hp<=0)
+	{
+		return 1;
+	}
+	return 0;
 }
-void CGamePlay::GameScreen(CObject* obj, int random)
+void CGamePlay::CreateObstacle(CObject* obj, int random)
 {
-	int blueCar_IntervalX = 0;
-	int redCar_IntervalX = 0;
+	int blueCar_intervalX = 0;
+	int redCar_intervalX = 0;
+	int yellowCar_intervalX = 0;
+	int train_intervalX = 0;
+	int river_IntervalX = 0;
 
 	if (random == BLUECAR)
-	{
-		for (int i = 0; i < 3; i++)//4는 차의 갯수
+		for (int i = 0; i < 3; i++)
 		{
-			obj->AddObject(new CBlueCar, blueCar_IntervalX, 3);
-			blueCar_IntervalX += 20;//간격
+			obj->AddObject(new CBlueCar, blueCar_intervalX, 2);
+			blueCar_intervalX += 20;
 		}
-	}
 
 	if (random == REDCAR)
-	{
 		for (int i = 0; i < 2; i++)
 		{
-			obj->AddObject(new CRedCar, redCar_IntervalX, 3);
-			redCar_IntervalX += 30;
+			obj->AddObject(new CRedCar, redCar_intervalX, 2);
+			redCar_intervalX += 30;
 		}
-	}
+
+	if (random == YELLOWCAR)
+		for (int i = 0; i < 2; i++)
+		{
+			obj->AddObject(new CYellowCar, yellowCar_intervalX, 2);
+			yellowCar_intervalX += 25;
+		}
+
+	if (random == TRAIN)
+		for (int i = 0; i < 1; i++)
+		{
+			obj->AddObject(new CTrain, train_intervalX, 2);
+		}
 }
+void CGamePlay::SetFile()
+{
+	
+}
+void CGamePlay::GetFile()
+{
+	
+
+}
+
+

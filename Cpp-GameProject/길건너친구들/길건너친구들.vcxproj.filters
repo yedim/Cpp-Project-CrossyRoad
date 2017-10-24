@@ -55,12 +55,6 @@
     <Filter Include="소스 파일\02.Object\02.Obstacle\04.Train">
       <UniqueIdentifier>{6e408c83-147b-4077-99bf-5bc6e7d70c79}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\02.Object\02.Obstacle\05.River">
-      <UniqueIdentifier>{90f758aa-56f0-49e3-b0a5-4969c2ed903b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\02.Object\02.Obstacle\06.Log">
-      <UniqueIdentifier>{0f529433-925e-470f-9afc-e5df4924ced6}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameSetting.cpp">
@@ -95,9 +89,6 @@
     </ClCompile>
     <ClCompile Include="Train.cpp">
       <Filter>소스 파일\02.Object\02.Obstacle\04.Train</Filter>
-    </ClCompile>
-    <ClCompile Include="River.cpp">
-      <Filter>소스 파일\02.Object\02.Obstacle\05.River</Filter>
     </ClCompile>
     <ClCompile Include="MainGame.cpp">
       <Filter>소스 파일</Filter>
@@ -136,9 +127,6 @@
     </ClInclude>
     <ClInclude Include="Train.h">
       <Filter>소스 파일\02.Object\02.Obstacle\04.Train</Filter>
-    </ClInclude>
-    <ClInclude Include="River.h">
-      <Filter>소스 파일\02.Object\02.Obstacle\05.River</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
