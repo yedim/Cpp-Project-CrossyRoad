@@ -14,11 +14,13 @@ int main()
 	int start_n;
 	int rules_n;
 	int over_n;
+	int hp = 2;
 
 	while (1)
 	{
 		gamestart->DelCursor();
 		gamestart->LoadingGame();
+
 		while (1)
 		{
 			start_n = gamestart->MainMenu(12, 30);
@@ -36,8 +38,17 @@ int main()
 
 		while (1)
 		{
-			if (gameplay->PlayingGame() == 1)
+			gameplay->GetScoreFile();
+			gameplay->GetCoinFile();
+
+			if (gameplay->PlayingGame(hp) == 1)
 			{
+				gameplay->score = 0;
+				hp = 2;
+				gameplay->SetScoreFile(gameplay->topScore);
+				gameplay->SetCoinFile(gameplay->coin);
+				Sleep(1000);
+
 				while (1)
 				{
 					over_n = gameover->GameOverMenu(12, 30) - 1;
@@ -49,12 +60,16 @@ int main()
 						printf("Coin %3d", gameplay->coin);
 					}
 					else if (over_n == 2){
-						gameplay->player->hp += gameover->Prize(gameplay);
+						hp += gameover->Prize(gameplay);
+						
 						CGameSetting::gotoxy(33, 2);
-						for (int i = 0; i < gameplay->player->hp; i++)
+						
+						for (int i = 0; i < hp; i++)
 						{
 							CGameSetting::setcolor(BLACK, RED); printf("♥");
 						}
+						gameplay->SetCoinFile(gameplay->coin);
+
 					}
 					else if (over_n == 3){ exit(0); }//게임종료
 				}

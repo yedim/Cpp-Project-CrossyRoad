@@ -16,15 +16,16 @@ CGamePlay::~CGamePlay()
 	delete player;
 }
 
-int CGamePlay::PlayingGame()
+
+int CGamePlay::PlayingGame(int h)
 {
 	srand((unsigned)time(NULL));
 
 	obj = new CObject;
 	player = new CPlayer;
-
 	runTime = clock();
 	pressTime = runTime; //cf. 초기값 없으면->쓰레기값
+	hp = h;
 	while (true)
 	{
 		system("cls");
@@ -74,7 +75,7 @@ int CGamePlay::PlayingGame()
 			{
 				if (unbeatableTime > 5)
 				{
-					--player->hp;
+					--hp;
 				}
 				unbeatableTime = 0;
 			}
@@ -102,6 +103,12 @@ int CGamePlay::ScoreBoard(CPlayer* player)
 
 	CGameSetting::gotoxy(5, 2);
 	printf("Score %d", score);
+	CGameSetting::gotoxy(5, 3);
+	if (score > topScore)
+	{
+		topScore = score;
+	}
+	printf("Top   %d", topScore);
 	CGameSetting::gotoxy(47, 2);
 	printf("Timer ");
 	for (int i = 0; i < timer; i++)
@@ -114,11 +121,11 @@ int CGamePlay::ScoreBoard(CPlayer* player)
 	printf("Coin %3d", coin); 
 
 	CGameSetting::gotoxy(33, 2);
-	for (int i = 0; i < player->hp; i++)
+	for (int i = 0; i < hp; i++)
 	{
 		CGameSetting::setcolor(BLACK,RED); printf("♥");
 	}
-	if (timer <= 0 || player->hp<=0)
+	if (timer <= 0 || hp<=0)
 	{
 		return 1;
 	}
@@ -159,14 +166,26 @@ void CGamePlay::CreateObstacle(CObject* obj, int random)
 			obj->AddObject(new CTrain, train_intervalX, 2);
 		}
 }
-void CGamePlay::SetFile()
+void CGamePlay::SetScoreFile(int score)
 {
-	
-}
-void CGamePlay::GetFile()
-{
-	
+	ofstream outFile("Score.txt");
+	outFile << score<< endl;
 
 }
+void CGamePlay::SetCoinFile(int coin)
+{
+	ofstream outFile("Coin.txt");
+	outFile << coin;
 
+}
+void CGamePlay::GetScoreFile()
+{
+	ifstream inFile("Score.txt");
+	inFile >> topScore;
 
+}
+void CGamePlay::GetCoinFile()
+{
+	ifstream inFile("Coin.txt");
+	inFile >> coin;
+}
