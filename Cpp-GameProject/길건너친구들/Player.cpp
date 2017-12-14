@@ -32,3 +32,4 @@ void CPlayer::move_arrow_key(char key, int *x, int *y, int x_b, int y_b){
 		return;
 	}
 }
+

@@ -45,6 +45,9 @@ int CGameSetting::MenuSelect(int x, int y, int Min, int Max, int Space)
 			CGameSetting::setcolor(DARK_GREEN, RED);
 			printf("¢¾");
 			Sleep(500);
+			CGameSetting::gotoxy(x, y);
+			CGameSetting::setcolor(DARK_GREEN, BLACK);
+			printf("  ");
 			return (x  / Min);
 		}
 		Sleep(100);

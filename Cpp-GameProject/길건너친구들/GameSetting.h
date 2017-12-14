@@ -6,6 +6,8 @@
 #include <time.h>
 #include <list>
 #include <stdio.h>
+#include <fstream>
+#include <string>
 
 using namespace std;
 #define SCREEN_X 79
